@@ -91,7 +91,7 @@ def get_lead(lead_id: str):
     Retrieve a single lead by document ID.
     """
     try:
-        db = firestore.Client()
+        db = firestore.Client(project=os.getenv("GOOGLE_CLOUD_PROJECT"))
         doc_ref = db.collection('leads').document(lead_id)
         doc = doc_ref.get()
         if not doc.exists:

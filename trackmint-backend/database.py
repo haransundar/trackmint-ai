@@ -20,7 +20,7 @@ def save_lead_to_firestore(data: dict) -> bool:
     try:
         # Validate data before saving
         lead = LeadModel(**data)
-        db = firestore.Client()
+        db = firestore.Client(project=os.getenv("GOOGLE_CLOUD_PROJECT"))
         doc_ref = db.collection('leads').document()
         data_with_timestamp = lead.dict()
         if not data_with_timestamp.get('timestamp'):
