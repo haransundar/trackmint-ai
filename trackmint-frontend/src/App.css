@@ -1,3 +1,10 @@
+body {
+  background: #0a192f;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
 .App {
   text-align: center;
 }
