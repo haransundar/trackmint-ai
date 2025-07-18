@@ -22,26 +22,31 @@ body.light-mode {
   100% { background-position: 100px 100px, 0 0; }
 }
 .App-main {
-  background: rgba(30, 40, 60, 0.95);
-  border-radius: 18px;
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 0 32px #00eaff22;
+  background: rgba(30, 40, 60, 0.98);
+  border-radius: 22px;
+  max-width: 980px;
+  margin: 4rem auto 2rem auto;
+  padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+  box-shadow: 0 8px 48px #00eaff33, 0 1.5px 8px #0002;
   position: relative;
   z-index: 1;
+  border: 1.5px solid #00eaff33;
 }
 body.light-mode .App-main {
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 0 32px #00bcd422;
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 8px 48px #00bcd433, 0 1.5px 8px #0001;
+  border: 1.5px solid #00bcd433;
 }
 .App-header {
   color: #fff;
   text-shadow: 0 2px 8px #000;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+  margin-bottom: 2.2rem;
+  font-size: 2.6rem;
   font-weight: bold;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 body.light-mode .App-header {
   color: #00bcd4;
@@ -52,7 +57,7 @@ body.light-mode .App-header {
   font-weight: 700;
 }
 .subtitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #ffd700;
   font-weight: 500;
   margin-top: 0.5rem;
@@ -60,8 +65,9 @@ body.light-mode .App-header {
 }
 .dashboard-columns {
   display: flex;
-  gap: 2rem;
+  gap: 2.2rem;
   align-items: flex-start;
+  margin-top: 1.5rem;
 }
 .lead-list-col {
   flex: 1;
@@ -73,19 +79,49 @@ body.light-mode .App-header {
   background: none;
   border: none;
   color: #00eaff;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   cursor: pointer;
-  margin-left: 1rem;
+  margin-left: 1.2rem;
   padding: 0.5rem;
-  transition: color 0.2s;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
 }
 .settings-btn:hover {
   color: #ffd700;
+  background: #00eaff22;
 }
 .error-msg {
   color: #ff4d4f;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   font-weight: bold;
+  font-size: 1.08rem;
+  letter-spacing: 0.2px;
+}
+input, select, button {
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #00eaff44;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, select:focus {
+  border: 1.5px solid #00eaff;
+  box-shadow: 0 0 0 2px #00eaff33;
+}
+button {
+  background: linear-gradient(90deg, #00eaff 60%, #ffd700 100%);
+  color: #222;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #00eaff22;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+button:active {
+  box-shadow: 0 2px 16px #00eaff44;
 }
 @media (max-width: 900px) {
   .dashboard-columns {
@@ -94,6 +130,7 @@ body.light-mode .App-header {
   }
   .App-main {
     padding: 1.2rem;
+    margin: 2rem auto;
   }
 }
 @media (max-width: 600px) {
