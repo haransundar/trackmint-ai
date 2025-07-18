@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import DataConstellation from './DataConstellation';
 import CompanyForm from './components/CompanyForm';
 import LeadList from './components/LeadList';
 import LeadDetail from './components/LeadDetail';
@@ -106,7 +105,7 @@ function App() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      <DataConstellation />
+      <div className="background-animated"></div>
       <Toast message={toast.message} type={toast.type} onClose={() => setToast({ message: '', type: 'info' })} />
       <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
       <div className="App-main" style={{ position: 'relative', zIndex: 1, maxWidth: 900, margin: '0 auto', padding: '2rem' }}>
@@ -118,7 +117,7 @@ function App() {
           <button onClick={() => setSettingsOpen(true)} style={{ background: 'none', border: 'none', color: '#00eaff', fontSize: '1.5rem', cursor: 'pointer', marginLeft: '1rem', padding: '0.5rem' }} title="Settings">
             <span role="img" aria-label="settings">⚙️</span>
           </button>
-        </header>
+      </header>
         <CompanyForm onSubmit={handleSubmit} loading={loading} />
         <LeadFilterBar onFilterChange={handleFilterChange} />
         {error && <div style={{ color: '#ff4d4f', marginBottom: '1rem' }}>{error}</div>}

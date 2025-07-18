@@ -1,17 +1,44 @@
 body {
-  background: #0a192f;
   min-height: 100vh;
   margin: 0;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #0a192f 0%, #00eaff 100%);
+  transition: background 0.5s;
+}
+
+body.light-mode {
+  background: linear-gradient(135deg, #f5fafd 0%, #00bcd4 100%);
+}
+
+.background-animated {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-radial-gradient(circle at 20% 30%, #00eaff22, #0a192f 40px, transparent 80px),
+              repeating-radial-gradient(circle at 80% 70%, #ffd70022, #0a192f 40px, transparent 80px);
+  animation: bgMove 10s linear infinite alternate;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0 0, 100% 100%; }
+  100% { background-position: 100px 100px, 0 0; }
 }
 
 .App-main {
   background: rgba(30, 40, 60, 0.95);
-  border-radius: 16px;
+  border-radius: 18px;
   max-width: 900px;
   margin: 3rem auto;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   box-shadow: 0 0 32px #00eaff22;
+  position: relative;
+  z-index: 1;
+}
+
+body.light-mode .App-main {
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 0 32px #00bcd422;
 }
 
 .App-header {
@@ -21,6 +48,11 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+body.light-mode .App-header {
+  color: #00bcd4;
+  text-shadow: none;
 }
 
 .App {
