@@ -123,6 +123,91 @@ button {
 button:active {
   box-shadow: 0 2px 16px #00eaff44;
 }
+.lead-card {
+  background: rgba(20, 30, 40, 0.85);
+  border-radius: 16px;
+  box-shadow: 0 0 8px 2px #00eaff66;
+  border: 1px solid #222;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+.lead-card-selected {
+  box-shadow: 0 0 24px 4px #00eaff;
+  border: 2px solid #00eaff;
+}
+.lead-card-url {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.lead-card-signals {
+  font-size: 0.95rem;
+  color: #00eaff;
+  margin-bottom: 0.5rem;
+}
+.lead-card-timestamp {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.company-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.company-input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #00eaff;
+  font-size: 1rem;
+}
+.company-analyze-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  background: #00eaff;
+  color: #222;
+  font-weight: bold;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #00eaff44;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.company-analyze-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.company-form-error {
+  color: #ff4d4f;
+  margin-left: 1rem;
+}
+.lead-detail {
+  background: rgba(30, 40, 60, 0.95);
+  border-radius: 16px;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 0 16px #00eaff33;
+  min-height: 200px;
+}
+.lead-detail-title {
+  color: #00eaff;
+  margin-bottom: 1rem;
+}
+.lead-detail-timestamp {
+  margin-bottom: 1.5rem;
+  color: #aaa;
+  font-size: 0.95rem;
+}
+.lead-detail-signals {
+  margin-bottom: 2rem;
+}
+.lead-detail-fadein {
+  animation: fadeIn 0.7s;
+}
 @media (max-width: 900px) {
   .dashboard-columns {
     flex-direction: column;

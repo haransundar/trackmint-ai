@@ -15,24 +15,24 @@ export default function CompanyForm({ onSubmit, loading }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '2rem' }}>
+    <form onSubmit={handleSubmit} className="company-form">
       <input
         type="url"
         placeholder="Enter company website URL..."
         value={url}
         onChange={e => setUrl(e.target.value)}
-        style={{ flex: 1, padding: '0.75rem', borderRadius: '8px', border: '1px solid #00eaff', fontSize: '1rem' }}
+        className="company-input"
         disabled={loading}
         required
       />
       <button
         type="submit"
-        style={{ padding: '0.75rem 2rem', borderRadius: '8px', background: '#00eaff', color: '#222', fontWeight: 'bold', border: 'none', fontSize: '1rem', cursor: 'pointer', boxShadow: '0 2px 8px #00eaff44' }}
+        className="company-analyze-btn"
         disabled={loading}
       >
         {loading ? 'Processing...' : 'Analyze'}
       </button>
-      {error && <span style={{ color: '#ff4d4f', marginLeft: '1rem' }}>{error}</span>}
+      {error && <span className="company-form-error">{error}</span>}
     </form>
   );
 } 
