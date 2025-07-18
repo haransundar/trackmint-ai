@@ -9,14 +9,15 @@ export default function DataConstellation() {
       width: '100vw',
       height: '100vh',
       zIndex: 0,
-      pointerEvents: 'none', // ensures UI is clickable
+      pointerEvents: 'none', // allows UI interaction
+      background: 'radial-gradient(ellipse at center, #0a192f 0%, #1a2a3a 100%)'
     }}>
       <Canvas style={{ width: '100vw', height: '100vh', display: 'block' }}>
+        <ambientLight intensity={0.7} />
         <mesh>
-          <boxGeometry args={[2, 2, 2]} />
-          <meshStandardMaterial color="hotpink" />
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial color="#00eaff" emissive="#00eaff" emissiveIntensity={0.7} />
         </mesh>
-        <ambientLight />
       </Canvas>
     </div>
   );
