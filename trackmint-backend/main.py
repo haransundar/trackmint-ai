@@ -14,7 +14,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://trackmint-ai.vercel.app"],  # Or ["*"] for all origins (for testing)
+    allow_origins=["https://trackmint-ai.vercel.app"],  # Or ["*"] for testing
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
