@@ -6,6 +6,7 @@ import LeadFilterBar from './components/LeadFilterBar';
 import SettingsPanel from './components/SettingsPanel';
 import AuthPanel from './components/AuthPanel';
 import Toast from './components/Toast';
+import ThemeToggle from './components/ThemeToggle';
 import { processCompany, getLeads, getLead } from './api';
 import './App.css';
 
@@ -20,7 +21,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('trackmint_user'));
   const [toast, setToast] = useState({ message: '', type: 'info' });
 
-  // Fetch leads on mount
   useEffect(() => {
     fetchLeads();
   }, []);
@@ -72,15 +72,12 @@ function App() {
     setFilter(newFilter);
   }
 
-  // Filtering, searching, and sorting logic
   const filteredLeads = leads
     .filter(lead => {
-      // Keyword search (url or any signal value)
       const kw = filter.keyword.toLowerCase();
       if (kw && !lead.url.toLowerCase().includes(kw) && !Object.values(lead.ai_analysis || {}).some(v => String(v).toLowerCase().includes(kw))) {
         return false;
       }
-      // Signal type filter
       if (filter.signal && !(lead.ai_analysis && lead.ai_analysis[filter.signal])) {
         return false;
       }
@@ -104,33 +101,38 @@ function App() {
   }
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+    <>
       <div className="background-animated"></div>
       <Toast message={toast.message} type={toast.type} onClose={() => setToast({ message: '', type: 'info' })} />
       <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
-      <div className="App-main" style={{ position: 'relative', zIndex: 1, maxWidth: 900, margin: '0 auto', padding: '2rem' }}>
-        <header className="App-header" style={{ color: '#fff', textShadow: '0 2px 8px #000', marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div>
-            <h1>TrackMint AI - Signal Intelligence Hub</h1>
-            <p>Discover actionable B2B buying signals in real time.</p>
+      <div className="App-main">
+        <header className="App-header">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <h1>TrackMint AI <span className="brand-accent">- Signal Intelligence Hub</span></h1>
+              <p className="subtitle">Discover actionable B2B buying signals in real time.</p>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <ThemeToggle />
+              <button onClick={() => setSettingsOpen(true)} className="settings-btn" title="Settings">
+                <span role="img" aria-label="settings">⚙️</span>
+              </button>
+            </div>
           </div>
-          <button onClick={() => setSettingsOpen(true)} style={{ background: 'none', border: 'none', color: '#00eaff', fontSize: '1.5rem', cursor: 'pointer', marginLeft: '1rem', padding: '0.5rem' }} title="Settings">
-            <span role="img" aria-label="settings">⚙️</span>
-          </button>
-      </header>
+        </header>
         <CompanyForm onSubmit={handleSubmit} loading={loading} />
         <LeadFilterBar onFilterChange={handleFilterChange} />
-        {error && <div style={{ color: '#ff4d4f', marginBottom: '1rem' }}>{error}</div>}
-        <div className="App-main" style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
-          <div style={{ flex: 1 }}>
+        {error && <div className="error-msg">{error}</div>}
+        <div className="dashboard-columns">
+          <div className="lead-list-col">
             <LeadList leads={filteredLeads} onSelect={handleSelect} selectedId={selectedId} />
           </div>
-          <div style={{ flex: 2 }}>
+          <div className="lead-detail-col">
             <LeadDetail lead={selectedLead} />
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
